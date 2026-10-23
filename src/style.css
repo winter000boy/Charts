@@ -1,0 +1,205 @@
+:root {
+  --bg: #131722;
+  --panel: #1e222d;
+  --border: #2a2e39;
+  --text: #d1d4dc;
+  --muted: #787b86;
+  --accent: #2962ff;
+  --bid: #26a69a;
+  --ask: #ef5350;
+  --warn: #f0b90b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 8px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+select,
+input,
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.segmented {
+  display: flex;
+}
+
+.segmented button {
+  border-radius: 0;
+  margin-left: -1px;
+  cursor: pointer;
+}
+
+.segmented button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.segmented button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.segmented button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* An exchange whose last order book request failed */
+.segmented button.failed::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: var(--ask);
+  vertical-align: 1px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+}
+
+.field input {
+  width: 72px;
+}
+
+.legend,
+.walls {
+  color: var(--muted);
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px 0 8px;
+  border-radius: 2px;
+  vertical-align: -1px;
+}
+
+.swatch.bid {
+  background: var(--bid);
+  margin-left: 0;
+}
+
+.swatch.ask {
+  background: var(--ask);
+}
+
+.walls b.bid {
+  color: var(--bid);
+}
+
+.walls b.ask {
+  color: var(--ask);
+}
+
+.status {
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.status.live {
+  color: var(--bid);
+}
+
+.status.warn {
+  color: var(--warn);
+}
+
+.status.error {
+  color: var(--ask);
+}
+
+#chart {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Per-exchange breakdown shown when hovering an order book bar */
+.tooltip {
+  position: absolute;
+  z-index: 10;
+  padding: 8px 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.tooltip .title {
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+.tooltip table {
+  border-collapse: collapse;
+}
+
+.tooltip th,
+.tooltip td {
+  padding: 1px 0 1px 12px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tooltip th:first-child,
+.tooltip td:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.tooltip th {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.tooltip .bid {
+  color: var(--bid);
+}
+
+.tooltip .ask {
+  color: var(--ask);
+}
+
+.tooltip tr.total td {
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+}

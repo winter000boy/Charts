@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Book Chart</title>
+  </head>
+  <body>
+    <header class="toolbar">
+      <select id="symbol" aria-label="Symbol"></select>
+
+      <div id="intervals" class="segmented" role="group" aria-label="Timeframe">
+        <button data-interval="1m">1m</button>
+        <button data-interval="5m">5m</button>
+        <button data-interval="15m" class="active">15m</button>
+        <button data-interval="1h">1h</button>
+        <button data-interval="4h">4h</button>
+        <button data-interval="1d">1D</button>
+      </div>
+
+      <div id="exchanges" class="segmented" role="group" aria-label="Order book exchanges"></div>
+
+      <label class="field">
+        Bucket $
+        <input id="bucket" type="number" min="0.01" step="any" value="1" />
+      </label>
+
+      <span class="legend"><i class="swatch bid"></i>Buy orders <i class="swatch ask"></i>Sell orders</span>
+
+      <span id="walls" class="walls"></span>
+      <span id="status" class="status">Loading…</span>
+    </header>
+
+    <main id="chart">
+      <div id="tooltip" class="tooltip" hidden></div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
