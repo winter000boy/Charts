@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support &amp; Resistance</title>
+  </head>
+  <body>
+    <header class="toolbar">
+      <select id="symbol" aria-label="Symbol"></select>
+
+      <div id="intervals" class="segmented" role="group" aria-label="Timeframe">
+        <button data-interval="15m">15m</button>
+        <button data-interval="1h">1h</button>
+        <button data-interval="4h" class="active">4h</button>
+        <button data-interval="1d">1D</button>
+        <button data-interval="1w">1W</button>
+      </div>
+
+      <label class="field" title="Bars on each side a high/low must beat to count as a swing">
+        Swing bars
+        <input id="swing" type="number" min="1" max="50" step="1" value="5" />
+      </label>
+
+      <label class="field" title="How many of the strongest levels to draw">
+        Levels
+        <input id="count" type="number" min="1" max="30" step="1" value="8" />
+      </label>
+
+      <span class="legend"><i class="swatch bid"></i>Support <i class="swatch ask"></i>Resistance</span>
+
+      <span id="status" class="status">Loading…</span>
+    </header>
+
+    <main id="chart"></main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
